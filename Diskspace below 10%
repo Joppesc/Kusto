@@ -1,0 +1,17 @@
+InsightsMetrics
+| where TimeGenerated > ago(15m)
+| where Name == "FreeSpacePercentage"
+| where Val < 10
+| where Val != 0
+| extend Tags = parse_json(Tags)
+| extend Disk = tostring(Tags["vm.azm.ms/mountId"])
+| summarize PercFree = min(Val) by Computer, Disk
+| sort by PercFree asc
+| where (
+    (Computer startswith "Servername")) 
+
+    )
+| where PercFree < 10
+| sort by PercFree asc
+| render table title = "Disks < 10% vrije ruimte"
+
