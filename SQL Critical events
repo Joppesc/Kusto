@@ -1,0 +1,6 @@
+Event
+| where Source == "MSSQLSERVER"
+| where EventLevel == 1 or EventID in (823, 824, 825, 9001, 9002, 3414, 3456, 1105, 18210, 3624, 5180, 5105, 605, 1101)
+| where TimeGenerated > ago(5m)
+| project TimeGenerated, Computer, EventID, RenderedDescription
+| order by TimeGenerated desc
