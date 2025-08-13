@@ -9,8 +9,6 @@ InsightsMetrics
 | sort by PercFree asc
 | where (
     (Computer startswith "Servername")) 
-
-    )
 | where PercFree < 10
 | sort by PercFree asc
 | render table title = "Disks < 10% vrije ruimte"
