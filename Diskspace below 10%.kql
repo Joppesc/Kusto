@@ -1,3 +1,5 @@
+// KQL Alertrule to warn at low diskspace
+
 InsightsMetrics
 | where TimeGenerated > ago(15m)
 | where Name == "FreeSpacePercentage"

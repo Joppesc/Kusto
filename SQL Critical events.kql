@@ -1,4 +1,4 @@
-
+// KQL Alertrule to warn at critical SQL events focussing on severety level 18 and above
 
 Event
 | where Source == "MSSQLSERVER"
